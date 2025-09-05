@@ -1,90 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FileText, Brain, Zap, Shield } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { PDFUpload } from "@/components/PDFUpload";
 import { QuestionInput } from "@/components/QuestionInput";
 import { AnswerDisplay } from "@/components/AnswerDisplay";
-import { RAGStatus, RAGStep } from "@/components/RAGStatus";
 import { RunwaiWordmark } from "@/components/RunwaiWordmark";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { toast } from "@/hooks/use-toast";
 
-// Mock data for demonstration
-const MOCK_RETRIEVED_CHUNKS = [
-  {
-    content: "The study analyzed 1,247 participants over a 12-month period, examining the effectiveness of various machine learning approaches in document processing. Key findings indicate a 34% improvement in accuracy when using transformer-based models compared to traditional methods.",
-    page: 15,
-    similarity: 0.92
-  },
-  {
-    content: "Implementation of retrieval-augmented generation systems showed significant improvements in information extraction tasks. The methodology incorporated vector embeddings with semantic search capabilities, resulting in more relevant context retrieval.",
-    page: 23,
-    similarity: 0.87
-  },
-  {
-    content: "Comparative analysis revealed that LangGraph-based pipelines provide better modularity and scalability for RAG implementations. The modular architecture allows for easier debugging and optimization of individual components.",
-    page: 31,
-    similarity: 0.84
-  }
-];
-
-const MOCK_ANSWER = `Based on the document analysis, here are the main findings:
-
-**Key Results:**
-The study demonstrates a significant 34% improvement in accuracy when implementing transformer-based models for document processing tasks. This represents a substantial advancement over traditional approaches.
-
-**Methodology Highlights:**
-The research utilized a comprehensive dataset of 1,247 participants over 12 months, focusing on retrieval-augmented generation (RAG) systems. The implementation incorporated:
-
-• Vector embeddings for semantic understanding
-• Advanced search capabilities for context retrieval  
-• LangGraph-based modular pipeline architecture
-
-**Practical Implications:**
-The modular architecture of LangGraph provides enhanced scalability and easier debugging capabilities, making it particularly suitable for production RAG implementations. This approach allows for optimization of individual components while maintaining system integrity.
-
-The results suggest that modern transformer-based RAG systems can significantly outperform traditional document processing methods, with practical applications across various domains requiring intelligent document analysis.`;
-
-const RAG_PIPELINE_STEPS: RAGStep[] = [
-  {
-    id: 'ingestion',
-    name: 'Document Ingestion',
-    description: 'Loading and validating PDF document',
-    status: 'pending'
-  },
-  {
-    id: 'extraction',
-    name: 'Text Extraction',
-    description: 'Extracting and chunking text content',
-    status: 'pending'
-  },
-  {
-    id: 'embedding',
-    name: 'Embedding & Indexing',
-    description: 'Converting chunks to embeddings and storing in vector DB',
-    status: 'pending'
-  },
-  {
-    id: 'retrieval',
-    name: 'Context Retrieval',
-    description: 'Finding relevant chunks for the user query',
-    status: 'pending'
-  },
-  {
-    id: 'generation',
-    name: 'Answer Generation',
-    description: 'Generating final answer using LLM with context',
-    status: 'pending'
-  }
-];
-
 export default function Index() {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-  const [isProcessingFile, setIsProcessingFile] = useState(false);
-  const [fileProcessingProgress, setFileProcessingProgress] = useState(0);
-  const [ragSteps, setRagSteps] = useState<RAGStep[]>(RAG_PIPELINE_STEPS);
   const [isAnswering, setIsAnswering] = useState(false);
   const [currentAnswer, setCurrentAnswer] = useState<{
     question: string;
@@ -92,105 +18,64 @@ export default function Index() {
     chunks: any[];
   } | null>(null);
 
-  // Simulate file processing
-  useEffect(() => {
-    if (isProcessingFile) {
-      const interval = setInterval(() => {
-        setFileProcessingProgress((prev) => {
-          if (prev >= 100) {
-            clearInterval(interval);
-            setIsProcessingFile(false);
-            toast({
-              title: "Document Ready",
-              description: "Your PDF has been processed and indexed successfully.",
-            });
-            return 100;
-          }
-          return prev + Math.random() * 15;
-        });
-      }, 200);
+  const handleFileUploaded = (file: File) => {
+    setUploadedFile(file);
+    setCurrentAnswer(null);
+    toast({
+      title: "File Uploaded",
+      description: `${file.name} has been uploaded successfully.`,
+    });
+  };
 
-      return () => clearInterval(interval);
+  const handleQuestionSubmit = async (question: string) => {
+    if (!uploadedFile) {
+      toast({
+        title: "Error",
+        description: "Please upload a PDF file first.",
+        variant: "destructive",
+      });
+      return;
     }
-  }, [isProcessingFile]);
 
-  // Simulate RAG pipeline steps
-  const simulateRAGPipeline = async (question: string) => {
     setIsAnswering(true);
     setCurrentAnswer(null);
 
-    // Reset steps
-    setRagSteps(steps => steps.map(step => ({ ...step, status: 'pending' as const })));
+    const formData = new FormData();
+    formData.append("pdf_file", uploadedFile);
+    formData.append("query", question);
 
-    const stepSequence = ['ingestion', 'extraction', 'embedding', 'retrieval', 'generation'];
-    
-    for (let i = 0; i < stepSequence.length; i++) {
-      const stepId = stepSequence[i];
-      
-      // Mark current step as processing
-      setRagSteps(steps => 
-        steps.map(step => 
-          step.id === stepId 
-            ? { ...step, status: 'processing' as const, progress: 0 }
-            : step
-        )
-      );
-
-      // Simulate processing time with progress
-      await new Promise(resolve => {
-        const interval = setInterval(() => {
-          setRagSteps(steps => 
-            steps.map(step => 
-              step.id === stepId && step.progress !== undefined
-                ? { ...step, progress: Math.min((step.progress || 0) + Math.random() * 25, 100) }
-                : step
-            )
-          );
-        }, 100);
-
-        setTimeout(() => {
-          clearInterval(interval);
-          
-          // Mark step as completed
-          setRagSteps(steps => 
-            steps.map(step => 
-              step.id === stepId 
-                ? { ...step, status: 'completed' as const, progress: 100 }
-                : step
-            )
-          );
-          
-          resolve(void 0);
-        }, Math.random() * 1000 + 500);
+    try {
+      const response = await fetch("http://localhost:8000/invoke", {
+        method: "POST",
+        body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to get answer from the backend.");
+      }
+
+      const result = await response.json();
+
+      setCurrentAnswer({
+        question,
+        answer: result.answer,
+        chunks: result.retrieved_docs || [], // Assuming the backend returns retrieved_docs
+      });
+
+      toast({
+        title: "Answer Generated",
+        description: "Your question has been processed successfully.",
+      });
+    } catch (error) {
+      console.error("Error fetching answer:", error);
+      toast({
+        title: "Error",
+        description: "An error occurred while fetching the answer.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsAnswering(false);
     }
-
-    // Show final answer
-    setCurrentAnswer({
-      question,
-      answer: MOCK_ANSWER,
-      chunks: MOCK_RETRIEVED_CHUNKS
-    });
-    setIsAnswering(false);
-
-    toast({
-      title: "Answer Generated",
-      description: "Your question has been processed successfully.",
-    });
-  };
-
-  const handleFileUploaded = (file: File) => {
-    setUploadedFile(file);
-    setIsProcessingFile(true);
-    setFileProcessingProgress(0);
-    setCurrentAnswer(null);
-    
-    // Reset RAG steps
-    setRagSteps(RAG_PIPELINE_STEPS.map(step => ({ ...step, status: 'pending' })));
-  };
-
-  const handleQuestionSubmit = (question: string) => {
-    simulateRAGPipeline(question);
   };
 
   return (
@@ -223,16 +108,16 @@ export default function Index() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left Column - Upload & Question */}
           <div className="lg:col-span-2 space-y-6">
-            <PDFUpload 
+            <PDFUpload
               onFileUploaded={handleFileUploaded}
-              isProcessing={isProcessingFile}
-              processingProgress={fileProcessingProgress}
+              isProcessing={false}
+              processingProgress={0}
             />
-            
+
             <QuestionInput
               onSubmit={handleQuestionSubmit}
               isLoading={isAnswering}
-              disabled={!uploadedFile || isProcessingFile}
+              disabled={!uploadedFile}
             />
 
             {/* Answer Section */}
@@ -255,8 +140,6 @@ export default function Index() {
 
           {/* Right Column - Status & Features */}
           <div className="space-y-6">
-            <RAGStatus steps={ragSteps} />
-            
             {/* Features Card */}
             <Card className="p-6">
               <h3 className="font-semibold mb-4">Runwai System Features</h3>
@@ -268,9 +151,9 @@ export default function Index() {
                     <p className="text-xs text-muted-foreground">Advanced text extraction & chunking</p>
                   </div>
                 </div>
-                
+
                 <Separator />
-                
+
                 <div className="flex items-center gap-3">
                   <Zap className="h-5 w-5 text-primary" />
                   <div>
@@ -278,9 +161,9 @@ export default function Index() {
                     <p className="text-xs text-muted-foreground">Semantic similarity matching</p>
                   </div>
                 </div>
-                
+
                 <Separator />
-                
+
                 <div className="flex items-center gap-3">
                   <Brain className="h-5 w-5 text-primary" />
                   <div>
@@ -288,9 +171,9 @@ export default function Index() {
                     <p className="text-xs text-muted-foreground">Advanced RAG architecture</p>
                   </div>
                 </div>
-                
+
                 <Separator />
-                
+
                 <div className="flex items-center gap-3">
                   <Shield className="h-5 w-5 text-primary" />
                   <div>
@@ -304,11 +187,10 @@ export default function Index() {
             {/* Technical Note */}
             <Card className="p-6 bg-warning-subtle border-warning">
               <h4 className="font-medium text-warning-foreground mb-2">
-                Demo Mode
+                Live Backend
               </h4>
               <p className="text-sm text-muted-foreground">
-                This is a frontend demonstration. For production use, implement the backend 
-                multi-agent pipeline with your preferred vector database and LLM provider.
+                This frontend is now connected to a live backend running the multi-agent pipeline.
               </p>
               <p className="text-xs text-muted-foreground mt-2">© Runwai</p>
             </Card>
