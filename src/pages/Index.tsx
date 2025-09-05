@@ -7,6 +7,8 @@ import { PDFUpload } from "@/components/PDFUpload";
 import { QuestionInput } from "@/components/QuestionInput";
 import { AnswerDisplay } from "@/components/AnswerDisplay";
 import { RAGStatus, RAGStep } from "@/components/RAGStatus";
+import { RunwaiWordmark } from "@/components/RunwaiWordmark";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { toast } from "@/hooks/use-toast";
 
 // Mock data for demonstration
@@ -196,16 +198,22 @@ export default function Index() {
       {/* Header */}
       <header className="border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-intelligence rounded-lg flex items-center justify-center">
-              <Brain className="h-6 w-6 text-primary-foreground" />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <Brain className="h-6 w-6 text-primary" />
+              </div>
+              <div className="flex items-center gap-4">
+                <RunwaiWordmark />
+                <div>
+                  <h1 className="text-2xl font-bold">— Document Q&A</h1>
+                  <p className="text-muted-foreground">
+                    Multi-Agent RAG Onboarding Platform
+                  </p>
+                </div>
+              </div>
             </div>
-            <div>
-              <h1 className="text-2xl font-bold">RAG Document Q&A</h1>
-              <p className="text-muted-foreground">
-                Upload documents and ask intelligent questions powered by LangGraph
-              </p>
-            </div>
+            <ThemeToggle />
           </div>
         </div>
       </header>
@@ -251,7 +259,7 @@ export default function Index() {
             
             {/* Features Card */}
             <Card className="p-6">
-              <h3 className="font-semibold mb-4">System Features</h3>
+              <h3 className="font-semibold mb-4">Runwai System Features</h3>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <FileText className="h-5 w-5 text-primary" />
@@ -276,8 +284,8 @@ export default function Index() {
                 <div className="flex items-center gap-3">
                   <Brain className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="text-sm font-medium">LangGraph Pipeline</p>
-                    <p className="text-xs text-muted-foreground">Modular RAG architecture</p>
+                    <p className="text-sm font-medium">Multi-Agent Pipeline</p>
+                    <p className="text-xs text-muted-foreground">Advanced RAG architecture</p>
                   </div>
                 </div>
                 
@@ -300,8 +308,9 @@ export default function Index() {
               </h4>
               <p className="text-sm text-muted-foreground">
                 This is a frontend demonstration. For production use, implement the backend 
-                LangGraph pipeline with your preferred vector database and LLM provider.
+                multi-agent pipeline with your preferred vector database and LLM provider.
               </p>
+              <p className="text-xs text-muted-foreground mt-2">© Runwai</p>
             </Card>
           </div>
         </div>

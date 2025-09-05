@@ -1,4 +1,4 @@
-import { CheckCircle, Clock, AlertCircle, Brain } from "lucide-react";
+import { CheckCircle, Clock, AlertCircle, Brain, Activity } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -48,8 +48,8 @@ export function RAGStatus({ steps, currentStep }: RAGStatusProps) {
     <Card className="p-6">
       <div className="space-y-4">
         <div className="flex items-center gap-2">
-          <Brain className="h-5 w-5 text-primary" />
-          <h3 className="font-semibold">RAG Pipeline Status</h3>
+          <Activity className="h-5 w-5 text-primary" />
+          <h3 className="font-semibold">Runwai Pipeline Status</h3>
         </div>
         
         <div className="space-y-3">

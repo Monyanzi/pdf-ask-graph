@@ -2,158 +2,239 @@
 @tailwind components;
 @tailwind utilities;
 
-/* RAG Document Q&A System Design System - Professional Intelligence Theme */
+/* Runwai - Multi-Agent RAG Platform Design System */
 
 @layer base {
   :root {
-    /* Background System */
-    --background: 0 0% 100%;
-    --background-subtle: 220 14% 96%;
-    --background-muted: 220 13% 91%;
-    --foreground: 224 71% 4%;
-
-    /* Card System */
-    --card: 0 0% 100%;
-    --card-foreground: 224 71% 4%;
-    --card-subtle: 220 14% 96%;
-
-    /* Popover System */
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71% 4%;
-
-    /* Intelligence Blue Primary - Deep, trustworthy */
-    --primary: 217 91% 60%;
-    --primary-dark: 217 91% 45%;
-    --primary-light: 217 91% 75%;
-    --primary-foreground: 0 0% 100%;
-    --primary-subtle: 217 91% 95%;
-
-    /* Professional Secondary */
-    --secondary: 220 13% 91%;
-    --secondary-foreground: 224 71% 4%;
-    --secondary-hover: 220 13% 85%;
-
-    /* Muted System for subtle elements */
-    --muted: 220 13% 91%;
-    --muted-foreground: 220 9% 46%;
-    --muted-dark: 220 9% 35%;
-
-    /* Success Green for completed uploads/processing */
-    --success: 142 76% 36%;
-    --success-foreground: 0 0% 100%;
-    --success-subtle: 142 76% 95%;
-
-    /* Warning for processing states */
-    --warning: 38 92% 50%;
-    --warning-foreground: 224 71% 4%;
-    --warning-subtle: 38 92% 95%;
-
-    /* Accent for highlights and interactive elements */
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
-    --accent-subtle: 217 91% 95%;
-
-    /* Destructive */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    /* Border and Input System */
-    --border: 220 13% 91%;
-    --border-subtle: 220 13% 95%;
-    --input: 220 13% 91%;
-    --input-focus: 217 91% 60%;
-    --ring: 217 91% 60%;
-
-    /* Document-focused gradients */
-    --gradient-intelligence: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 75%));
-    --gradient-document: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 96%));
-    --gradient-processing: linear-gradient(90deg, hsl(217 91% 60%), hsl(217 91% 45%));
-
-    /* Shadows for depth */
-    --shadow-subtle: 0 1px 2px 0 hsl(220 13% 91% / 0.05);
-    --shadow-soft: 0 4px 12px 0 hsl(220 13% 91% / 0.15);
-    --shadow-intelligence: 0 8px 25px 0 hsl(217 91% 60% / 0.15);
-
-    /* Animation curves */
-    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-    --radius: 0.75rem;
-    --radius-lg: 1rem;
-    --radius-sm: 0.5rem;
-
-    /* Sidebar (if needed) */
-    --sidebar-background: 220 14% 96%;
-    --sidebar-foreground: 224 71% 4%;
-    --sidebar-primary: 217 91% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 13% 91%;
-    --sidebar-accent-foreground: 224 71% 4%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217 91% 60%;
+    --radius: 14px;
+    --focus-ring: 2px solid var(--primary-500);
   }
 
-  .dark {
-    /* Dark mode for professional intelligence theme */
-    --background: 224 71% 4%;
-    --background-subtle: 224 71% 8%;
-    --background-muted: 224 71% 12%;
-    --foreground: 0 0% 95%;
+  /* DARK THEME (default, Vader vibe) */
+  .theme-dark {
+    --bg-100: #0B0D0F;   /* page background */
+    --bg-200: #111418;   /* cards/panels */
+    --bg-300: #1C1F26;   /* inset sections / chips */
+    --border-200: #2A2F3A;
+    --muted-400: #3B4252;
+    --text-100: #E8EAED; /* primary text */
+    --text-200: #C6CBD3; /* secondary text */
 
-    --card: 224 71% 6%;
-    --card-foreground: 0 0% 95%;
-    --card-subtle: 224 71% 8%;
+    --primary-500: #D90429; /* Runwai red */
+    --primary-600: #B3001B;
+    --primary-700: #8E0016;
 
-    --popover: 224 71% 6%;
-    --popover-foreground: 0 0% 95%;
+    --success-500: #22C55E;
+    --warning-500: #F59E0B;
+    --danger-500: #EF4444;
 
-    --primary: 217 91% 65%;
-    --primary-dark: 217 91% 50%;
-    --primary-light: 217 91% 80%;
-    --primary-foreground: 224 71% 4%;
-    --primary-subtle: 217 91% 15%;
+    /* Tailwind compatibility */
+    --background: 11 13% 6%;
+    --background-subtle: 17 20% 8%;
+    --background-muted: 28 31% 15%;
+    --foreground: 232 234% 91%;
 
-    --secondary: 224 71% 12%;
-    --secondary-foreground: 0 0% 90%;
-    --secondary-hover: 224 71% 16%;
+    --card: 17 20% 11%;
+    --card-foreground: 232 234% 91%;
+    --card-subtle: 17 20% 8%;
 
-    --muted: 224 71% 12%;
-    --muted-foreground: 220 9% 60%;
-    --muted-dark: 220 9% 50%;
+    --popover: 17 20% 11%;
+    --popover-foreground: 232 234% 91%;
 
-    --success: 142 76% 36%;
+    --primary: 348 96% 51%;
+    --primary-dark: 348 100% 35%;
+    --primary-light: 348 96% 66%;
+    --primary-foreground: 0 0% 100%;
+    --primary-subtle: 348 96% 15%;
+
+    --secondary: 28 31% 15%;
+    --secondary-foreground: 232 234% 91%;
+    --secondary-hover: 220 29% 20%;
+
+    --muted: 28 31% 15%;
+    --muted-foreground: 235 252% 59%;
+    --muted-dark: 235 252% 45%;
+
+    --success: 142 76% 55%;
     --success-foreground: 0 0% 100%;
     --success-subtle: 142 76% 15%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 224 71% 4%;
-    --warning-subtle: 38 92% 15%;
+    --warning: 38 95% 51%;
+    --warning-foreground: 11 13% 6%;
+    --warning-subtle: 38 95% 15%;
 
-    --accent: 217 91% 65%;
-    --accent-foreground: 224 71% 4%;
-    --accent-subtle: 217 91% 15%;
+    --accent: 348 96% 51%;
+    --accent-foreground: 0 0% 100%;
+    --accent-subtle: 348 96% 15%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 224 71% 16%;
-    --border-subtle: 224 71% 12%;
-    --input: 224 71% 16%;
-    --input-focus: 217 91% 65%;
-    --ring: 217 91% 65%;
+    --border: 42 47% 23%;
+    --border-subtle: 28 31% 15%;
+    --input: 28 31% 15%;
+    --input-focus: 348 96% 51%;
+    --ring: 348 96% 51%;
 
-    --sidebar-background: 224 71% 6%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 217 91% 65%;
-    --sidebar-primary-foreground: 224 71% 4%;
-    --sidebar-accent: 224 71% 12%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 224 71% 16%;
-    --sidebar-ring: 217 91% 65%;
+    --sidebar-background: 17 20% 11%;
+    --sidebar-foreground: 232 234% 91%;
+    --sidebar-primary: 348 96% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 28 31% 15%;
+    --sidebar-accent-foreground: 232 234% 91%;
+    --sidebar-border: 42 47% 23%;
+    --sidebar-ring: 348 96% 51%;
+  }
+
+  /* LIGHT THEME */
+  .theme-light {
+    --bg-100: #FFFFFF;
+    --bg-200: #F7F8FA;
+    --bg-300: #EDF1F5;
+    --border-200: #D5DAE1;
+    --muted-400: #5B6270;
+    --text-100: #111418;
+    --text-200: #334155;
+
+    --primary-500: #B3001B; /* deeper red for light contrast */
+    --primary-600: #9A0018;
+    --primary-700: #7C0013;
+
+    --success-500: #16A34A;
+    --warning-500: #B45309;
+    --danger-500: #DC2626;
+
+    /* Tailwind compatibility */
+    --background: 0 0% 100%;
+    --background-subtle: 220 25% 97%;
+    --background-muted: 225 29% 95%;
+    --foreground: 222 84% 5%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 5%;
+    --card-subtle: 220 25% 97%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 5%;
+
+    --primary: 348 100% 35%;
+    --primary-dark: 348 100% 25%;
+    --primary-light: 348 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-subtle: 348 100% 95%;
+
+    --secondary: 225 29% 95%;
+    --secondary-foreground: 222 84% 5%;
+    --secondary-hover: 220 25% 90%;
+
+    --muted: 225 29% 95%;
+    --muted-foreground: 215 16% 47%;
+    --muted-dark: 215 16% 35%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --success-subtle: 142 71% 95%;
+
+    --warning: 25 95% 53%;
+    --warning-foreground: 222 84% 5%;
+    --warning-subtle: 25 95% 95%;
+
+    --accent: 348 100% 35%;
+    --accent-foreground: 0 0% 100%;
+    --accent-subtle: 348 100% 95%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --border-subtle: 220 25% 97%;
+    --input: 225 29% 95%;
+    --input-focus: 348 100% 35%;
+    --ring: 348 100% 35%;
+
+    --sidebar-background: 220 25% 97%;
+    --sidebar-foreground: 222 84% 5%;
+    --sidebar-primary: 348 100% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 29% 95%;
+    --sidebar-accent-foreground: 222 84% 5%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 348 100% 35%;
   }
 }
 
 @layer components {
+  /* Component Mapping */
+  body { 
+    background: var(--bg-100); 
+    color: var(--text-100); 
+  }
+  
+  .card, .panel { 
+    background: var(--bg-200); 
+    border: 1px solid var(--border-200); 
+    border-radius: var(--radius);
+  }
+  
+  .subtle { 
+    background: var(--bg-300); 
+  }
+  
+  hr, .divider { 
+    border-color: var(--border-200); 
+  }
+  
+  a, .link { 
+    color: var(--primary-500); 
+  }
+  
+  .button-primary { 
+    background: var(--primary-500); 
+    color: #fff; 
+    border-radius: var(--radius);
+  }
+  
+  .button-primary:hover { 
+    background: var(--primary-600); 
+  }
+  
+  .button-outline { 
+    color: var(--primary-500); 
+    border: 1px solid var(--primary-500); 
+    background: transparent; 
+  }
+  
+  .badge-success { 
+    background: color-mix(in srgb, var(--success-500) 20%, transparent); 
+    color: var(--success-500); 
+  }
+  
+  .badge-pending { 
+    background: color-mix(in srgb, var(--muted-400) 15%, transparent); 
+    color: var(--text-200); 
+  }
+  
+  .input, .textarea { 
+    background: var(--bg-300); 
+    border: 1px solid var(--border-200); 
+    color: var(--text-100); 
+  }
+  
+  .input:focus, .textarea:focus, .button-primary:focus { 
+    outline: var(--focus-ring); 
+    outline-offset: 2px; 
+  }
+  
+  .dropzone { 
+    border: 2px dashed var(--border-200); 
+    background: var(--bg-300); 
+  }
+  
+  .dropzone:hover { 
+    border-color: var(--primary-500); 
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-500) 30%, transparent); 
+  }
+
   /* Document Upload Styles */
   .upload-area {
     @apply border-2 border-dashed border-border rounded-lg transition-colors duration-200;
@@ -184,14 +265,14 @@
     }
   }
   
-  /* Intelligence Glow Effect */
-  .intelligence-glow {
+  /* Runwai Glow Effect */
+  .runwai-glow {
     @apply shadow-lg;
-    box-shadow: var(--shadow-intelligence);
+    box-shadow: 0 8px 25px 0 hsl(var(--primary) / 0.15);
   }
   
-  .intelligence-glow:hover {
-    box-shadow: 0 12px 35px 0 hsl(217 91% 60% / 0.25);
+  .runwai-glow:hover {
+    box-shadow: 0 12px 35px 0 hsl(var(--primary) / 0.25);
   }
 }
 
@@ -200,8 +281,14 @@
     @apply border-border;
   }
 
+  html {
+    @apply theme-dark; /* Default to dark theme */
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background: var(--bg-100);
+    color: var(--text-100);
   }
 }
