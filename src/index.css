@@ -10,156 +10,156 @@
     --focus-ring: 2px solid var(--primary-500);
   }
 
-  /* DARK THEME (default, Vader vibe) */
+  /* DARK THEME (default, elegant professional) */
   .theme-dark {
-    --bg-100: #0B0D0F;   /* page background */
-    --bg-200: #111418;   /* cards/panels */
-    --bg-300: #1C1F26;   /* inset sections / chips */
-    --border-200: #2A2F3A;
-    --muted-400: #3B4252;
-    --text-100: #E8EAED; /* primary text */
-    --text-200: #C6CBD3; /* secondary text */
+    --bg-100: #0F1419;   /* page background - warmer dark */
+    --bg-200: #1A1F2E;   /* cards/panels - elevated surfaces */
+    --bg-300: #252B3A;   /* inset sections / chips - subtle depth */
+    --border-200: #34394A;
+    --muted-400: #6B7280;
+    --text-100: #F8FAFC; /* primary text - high contrast */
+    --text-200: #CBD5E1; /* secondary text - readable */
 
-    --primary-500: #D90429; /* Runwai red */
-    --primary-600: #B3001B;
-    --primary-700: #8E0016;
+    --primary-500: #DC2626; /* Refined red - more balanced */
+    --primary-600: #B91C1C;
+    --primary-700: #991B1B;
 
-    --success-500: #22C55E;
+    --success-500: #10B981;
     --warning-500: #F59E0B;
     --danger-500: #EF4444;
 
-    /* Tailwind compatibility - Higher contrast for better readability */
-    --background: 11 13% 6%;
-    --background-subtle: 17 20% 10%;
-    --background-muted: 22 22% 18%;
-    --foreground: 0 0% 95%;
+    /* Tailwind compatibility - Refined contrast */
+    --background: 217 19% 9%;
+    --background-subtle: 217 19% 12%;
+    --background-muted: 217 15% 17%;
+    --foreground: 210 40% 98%;
 
-    --card: 17 20% 12%;
-    --card-foreground: 0 0% 95%;
-    --card-subtle: 17 20% 8%;
+    --card: 217 19% 12%;
+    --card-foreground: 210 40% 98%;
+    --card-subtle: 217 19% 15%;
 
-    --popover: 17 20% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 217 19% 12%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 348 96% 51%;
-    --primary-dark: 348 100% 35%;
-    --primary-light: 348 96% 66%;
+    --primary: 0 84% 50%;
+    --primary-dark: 0 84% 37%;
+    --primary-light: 0 84% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-subtle: 348 96% 15%;
+    --primary-subtle: 0 84% 8%;
 
-    --secondary: 22 22% 20%;
-    --secondary-foreground: 0 0% 90%;
-    --secondary-hover: 22 22% 25%;
+    --secondary: 217 15% 20%;
+    --secondary-foreground: 210 20% 88%;
+    --secondary-hover: 217 15% 25%;
 
-    --muted: 22 22% 18%;
-    --muted-foreground: 0 0% 65%;
-    --muted-dark: 0 0% 50%;
+    --muted: 217 15% 17%;
+    --muted-foreground: 215 16% 65%;
+    --muted-dark: 215 16% 50%;
 
-    --success: 142 76% 55%;
+    --success: 160 84% 39%;
     --success-foreground: 0 0% 100%;
-    --success-subtle: 142 76% 15%;
+    --success-subtle: 160 84% 8%;
 
     --warning: 38 95% 51%;
-    --warning-foreground: 11 13% 6%;
-    --warning-subtle: 38 95% 15%;
+    --warning-foreground: 217 19% 9%;
+    --warning-subtle: 38 95% 8%;
 
-    --accent: 22 22% 25%;
-    --accent-foreground: 0 0% 90%;
-    --accent-subtle: 348 96% 15%;
+    --accent: 217 15% 25%;
+    --accent-foreground: 210 20% 88%;
+    --accent-subtle: 0 84% 8%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 22 22% 25%;
-    --border-subtle: 22 22% 18%;
-    --input: 22 22% 18%;
-    --input-focus: 348 96% 51%;
-    --ring: 348 96% 51%;
+    --border: 217 15% 25%;
+    --border-subtle: 217 15% 20%;
+    --input: 217 15% 17%;
+    --input-focus: 0 84% 50%;
+    --ring: 0 84% 50%;
 
-    --sidebar-background: 17 20% 12%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 348 96% 51%;
+    --sidebar-background: 217 19% 12%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 0 84% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 22 22% 20%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 22 22% 25%;
-    --sidebar-ring: 348 96% 51%;
+    --sidebar-accent: 217 15% 20%;
+    --sidebar-accent-foreground: 210 20% 88%;
+    --sidebar-border: 217 15% 25%;
+    --sidebar-ring: 0 84% 50%;
   }
 
-  /* LIGHT THEME */
+  /* LIGHT THEME (elegant professional) */
   .theme-light {
-    --bg-100: #FFFFFF;
-    --bg-200: #F7F8FA;
-    --bg-300: #EDF1F5;
-    --border-200: #D5DAE1;
-    --muted-400: #5B6270;
-    --text-100: #111418;
-    --text-200: #334155;
+    --bg-100: #FEFEFE;   /* pure white with subtle warmth */
+    --bg-200: #F8FAFC;   /* off-white cards */
+    --bg-300: #F1F5F9;   /* subtle background sections */
+    --border-200: #E2E8F0;
+    --muted-400: #64748B;
+    --text-100: #0F172A; /* rich dark text */
+    --text-200: #475569; /* readable secondary */
 
-    --primary-500: #B3001B; /* deeper red for light contrast */
-    --primary-600: #9A0018;
-    --primary-700: #7C0013;
+    --primary-500: #DC2626; /* consistent red across themes */
+    --primary-600: #B91C1C;
+    --primary-700: #991B1B;
 
-    --success-500: #16A34A;
-    --warning-500: #B45309;
+    --success-500: #059669;
+    --warning-500: #D97706;
     --danger-500: #DC2626;
 
-    /* Tailwind compatibility - Better contrast */
+    /* Tailwind compatibility - Refined light palette */
     --background: 0 0% 100%;
-    --background-subtle: 220 25% 98%;
-    --background-muted: 225 29% 96%;
-    --foreground: 222 84% 4%;
+    --background-subtle: 210 40% 98%;
+    --background-muted: 210 40% 96%;
+    --foreground: 222 84% 5%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 84% 4%;
-    --card-subtle: 220 25% 98%;
+    --card-foreground: 222 84% 5%;
+    --card-subtle: 210 40% 98%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 84% 4%;
+    --popover-foreground: 222 84% 5%;
 
-    --primary: 348 100% 35%;
-    --primary-dark: 348 100% 25%;
-    --primary-light: 348 100% 50%;
+    --primary: 0 84% 50%;
+    --primary-dark: 0 84% 37%;
+    --primary-light: 0 84% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-subtle: 348 100% 96%;
+    --primary-subtle: 0 84% 97%;
 
-    --secondary: 225 29% 96%;
-    --secondary-foreground: 222 84% 4%;
-    --secondary-hover: 220 25% 92%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 84% 5%;
+    --secondary-hover: 210 40% 92%;
 
-    --muted: 225 29% 96%;
-    --muted-foreground: 215 16% 40%;
-    --muted-dark: 215 16% 30%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 20% 40%;
+    --muted-dark: 215 20% 30%;
 
-    --success: 142 71% 45%;
+    --success: 160 84% 39%;
     --success-foreground: 0 0% 100%;
-    --success-subtle: 142 71% 96%;
+    --success-subtle: 160 84% 97%;
 
     --warning: 25 95% 53%;
     --warning-foreground: 0 0% 100%;
-    --warning-subtle: 25 95% 96%;
+    --warning-subtle: 25 95% 97%;
 
-    --accent: 225 29% 92%;
-    --accent-foreground: 222 84% 4%;
-    --accent-subtle: 348 100% 96%;
+    --accent: 210 40% 92%;
+    --accent-foreground: 222 84% 5%;
+    --accent-subtle: 0 84% 97%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 88%;
-    --border-subtle: 220 25% 95%;
-    --input: 225 29% 96%;
-    --input-focus: 348 100% 35%;
-    --ring: 348 100% 35%;
+    --border: 214 32% 85%;
+    --border-subtle: 210 40% 92%;
+    --input: 210 40% 96%;
+    --input-focus: 0 84% 50%;
+    --ring: 0 84% 50%;
 
-    --sidebar-background: 220 25% 98%;
-    --sidebar-foreground: 222 84% 4%;
-    --sidebar-primary: 348 100% 35%;
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 222 84% 5%;
+    --sidebar-primary: 0 84% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 225 29% 96%;
-    --sidebar-accent-foreground: 222 84% 4%;
-    --sidebar-border: 214 32% 88%;
-    --sidebar-ring: 348 100% 35%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 84% 5%;
+    --sidebar-border: 214 32% 85%;
+    --sidebar-ring: 0 84% 50%;
   }
 }
 

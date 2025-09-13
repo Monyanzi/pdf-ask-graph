@@ -85,14 +85,16 @@ export default {
 				}
 			},
 			backgroundImage: {
-				'gradient-intelligence': 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-dark)))',
+				'gradient-intelligence': 'linear-gradient(135deg, hsl(var(--primary)) / 0.1, hsl(var(--primary-dark)) / 0.05)',
 				'gradient-document': 'linear-gradient(180deg, hsl(var(--background)), hsl(var(--background-subtle)))',
-				'gradient-processing': 'linear-gradient(90deg, hsl(var(--warning) / 0.3), hsl(var(--warning) / 0.1))'
+				'gradient-processing': 'linear-gradient(90deg, hsl(var(--warning)) / 0.1, hsl(var(--warning)) / 0.05)',
+				'gradient-accent': 'linear-gradient(135deg, hsl(var(--primary)) / 0.8, hsl(var(--primary-dark)) / 0.9)'
 			},
 			boxShadow: {
-				'subtle': '0 2px 8px hsl(var(--muted) / 0.1)',
-				'soft': '0 4px 16px hsl(var(--muted) / 0.15)',
-				'intelligence': '0 8px 32px hsl(var(--primary) / 0.3)'
+				'subtle': '0 2px 8px hsl(var(--muted)) / 0.08',
+				'soft': '0 4px 16px hsl(var(--muted)) / 0.12',
+				'intelligence': '0 8px 32px hsl(var(--primary)) / 0.15',
+				'accent': '0 4px 20px hsl(var(--primary)) / 0.1'
 			},
 			transitionTimingFunction: {
 				'smooth': 'var(--transition-smooth)',
