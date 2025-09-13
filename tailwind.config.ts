@@ -85,14 +85,14 @@ export default {
 				}
 			},
 			backgroundImage: {
-				'gradient-intelligence': 'var(--gradient-intelligence)',
-				'gradient-document': 'var(--gradient-document)',
-				'gradient-processing': 'var(--gradient-processing)'
+				'gradient-intelligence': 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-dark)))',
+				'gradient-document': 'linear-gradient(180deg, hsl(var(--background)), hsl(var(--background-subtle)))',
+				'gradient-processing': 'linear-gradient(90deg, hsl(var(--warning) / 0.3), hsl(var(--warning) / 0.1))'
 			},
 			boxShadow: {
-				'subtle': 'var(--shadow-subtle)',
-				'soft': 'var(--shadow-soft)',
-				'intelligence': 'var(--shadow-intelligence)'
+				'subtle': '0 2px 8px hsl(var(--muted) / 0.1)',
+				'soft': '0 4px 16px hsl(var(--muted) / 0.15)',
+				'intelligence': '0 8px 32px hsl(var(--primary) / 0.3)'
 			},
 			transitionTimingFunction: {
 				'smooth': 'var(--transition-smooth)',
